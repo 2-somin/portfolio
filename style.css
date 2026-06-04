@@ -172,7 +172,7 @@ nav {
     border-radius: 50%;
     background: var(--accent);
     z-index: 2;
-    top: -64px;
+    top: -34px;
     left: -64px;
     pointer-events: none;
     will-change: transform;
