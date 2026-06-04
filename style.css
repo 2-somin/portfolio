@@ -172,18 +172,19 @@ nav {
     border-radius: 50%;
     background: var(--accent);
     z-index: 2;
-    top: 50%;
-    transform: translateY(-50%);
-    left: -160px;
-    animation: hero-drift 18s ease-in-out infinite alternate;
+    top: 0;
+    left: 0;
     pointer-events: none;
+    will-change: transform;
+    animation: hero-drift 18s ease-in-out infinite alternate;
 }
 
 @keyframes hero-drift {
-    0%   { left: -160px; top: 35%; }
-    30%  { top: 55%; }
-    60%  { top: 40%; }
-    100% { left: calc(100% + 20px); top: 50%; }
+    0%   { transform: translate(-160px, 35vh); }
+    25%  { transform: translate(20vw, 55vh); }
+    50%  { transform: translate(50vw, 25vh); }
+    75%  { transform: translate(70vw, 50vh); }
+    100% { transform: translate(calc(100vw + 20px), 40vh); }
 }
 
 .hero-inner {
