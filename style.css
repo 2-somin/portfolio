@@ -176,16 +176,16 @@ nav {
     left: -64px;
     pointer-events: none;
     will-change: transform;
-    animation: hero-drift 60s ease-in-out infinite;
+    animation: hero-drift 48s ease-in-out infinite;
 }
 
 @keyframes hero-drift {
-    0%   { transform: translate(0, 0); }
+    0%   { transform: translate(0px, 0px); }
     20%  { transform: translate(22px, 18px); }
     40%  { transform: translate(30px, 8px); }
     60%  { transform: translate(14px, 26px); }
     80%  { transform: translate(24px, 20px); }
-    100% { transform: translate(0, 0); }
+    100% { transform: translate(0px, 0px); }
 }
 
 .hero-inner {
