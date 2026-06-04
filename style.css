@@ -256,6 +256,19 @@ nav {
 .hero-photo {
     width: 260px;
     flex-shrink: 0;
+    position: relative;
+}
+
+.hero-photo::before {
+    content: '';
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: var(--accent);
+    top: 40px;
+    left: -60px;
+    z-index: 0;
 }
 
 .hero-photo img {
@@ -263,6 +276,8 @@ nav {
     aspect-ratio: 3 / 4;
     object-fit: cover;
     border-radius: 4px;
+    position: relative;
+    z-index: 1;
 }
 
 /* ─── SECTIONS ────────────────────────────────────── */
