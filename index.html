@@ -29,7 +29,7 @@
                 <div class="hero-text">
                     <span class="eyebrow">UXUI / Product Designer</span>
                     <h1>이소민<em>Lee Somin</em></h1>
-                    <p class="tagline">문제를 데이터로 판단하고,<br>실행으로 증명하는 프로덕트 디자이너</p>
+                    <p class="tagline"><span id="typed-text"></span><span class="cursor">|</span></p>
                     <div class="contact-row">
                         <a href="mailto:sm_0428@naver.com">sm_0428@naver.com</a>
                         <span class="dot">·</span>
@@ -255,6 +255,13 @@
                         </div>
                         <span class="cert-arrow">↗</span>
                     </a>
+                    <a href="%EC%88%98%EB%A3%8C%EC%A6%9D_%EC%8A%A4%EC%9C%84%ED%94%84_%EC%95%B1_3%EA%B8%B0_%EC%9D%B4%EC%86%8C%EB%AF%BC.pdf" target="_blank" rel="noopener" class="cert-item">
+                        <div class="cert-info">
+                            <h3>스위프 앱 3기 수료증</h3>
+                            <p>스위프 · 2025. 12 — 2026. 01</p>
+                        </div>
+                        <span class="cert-arrow">↗</span>
+                    </a>
                     <a href="%EC%9D%B8%ED%84%B410%20%EC%88%98%EB%A3%8C%EC%A6%9D.pdf" target="_blank" rel="noopener" class="cert-item">
                         <div class="cert-info">
                             <h3>인턴 10 수료증</h3>
@@ -285,5 +292,41 @@
         </div>
     </footer>
 
+    <script>
+        const lines = [
+            '문제를 데이터로 판단하고,',
+            '실행으로 증명하는 프로덕트 디자이너'
+        ];
+        const typedEl = document.getElementById('typed-text');
+        const cursorEl = document.querySelector('.cursor');
+        let lineIndex = 0;
+        let charIndex = 0;
+
+        function type() {
+            if (lineIndex >= lines.length) {
+                setTimeout(() => cursorEl.style.display = 'none', 1200);
+                return;
+            }
+
+            const currentLine = lines[lineIndex];
+
+            if (charIndex < currentLine.length) {
+                typedEl.innerHTML += currentLine[charIndex];
+                charIndex++;
+                setTimeout(type, 65);
+            } else {
+                lineIndex++;
+                charIndex = 0;
+                if (lineIndex < lines.length) {
+                    typedEl.innerHTML += '<br>';
+                    setTimeout(type, 200);
+                } else {
+                    setTimeout(() => cursorEl.style.display = 'none', 1200);
+                }
+            }
+        }
+
+        setTimeout(type, 600);
+    </script>
 </body>
 </html>
