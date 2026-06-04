@@ -295,6 +295,30 @@ section {
     margin-bottom: 6px;
 }
 
+.store-links {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+}
+
+.store-btn {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 4px 10px;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.store-btn:hover {
+    color: var(--text);
+    border-color: var(--text);
+}
+
 /* ─── EDUCATION ───────────────────────────────────── */
 
 .edu-grid {
