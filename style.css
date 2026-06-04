@@ -176,15 +176,14 @@ nav {
     left: 10%;
     pointer-events: none;
     will-change: transform;
-    animation: hero-drift 20s ease-in-out infinite;
+    animation: hero-drift 60s ease-in-out infinite;
 }
 
 @keyframes hero-drift {
     0%   { transform: translate(0, 0); }
-    20%  { transform: translate(55vw, 20vh); }
-    40%  { transform: translate(70vw, -5vh); }
-    60%  { transform: translate(40vw, 30vh); }
-    80%  { transform: translate(15vw, 10vh); }
+    25%  { transform: translate(8vw, 6vh); }
+    50%  { transform: translate(14vw, 2vh); }
+    75%  { transform: translate(6vw, 10vh); }
     100% { transform: translate(0, 0); }
 }
 
