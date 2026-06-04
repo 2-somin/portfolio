@@ -172,20 +172,19 @@ nav {
     border-radius: 50%;
     background: var(--accent);
     z-index: 2;
-    top: 0;
-    left: 0;
-    transform: translate(-40%, -40%);
+    top: -55px;
+    left: -55px;
     pointer-events: none;
     will-change: transform;
     animation: hero-drift 60s ease-in-out infinite;
 }
 
 @keyframes hero-drift {
-    0%   { transform: translate(-40%, -40%); }
-    25%  { transform: translate(-30%, -50%); }
-    50%  { transform: translate(-50%, -30%); }
-    75%  { transform: translate(-35%, -45%); }
-    100% { transform: translate(-40%, -40%); }
+    0%   { transform: translate(0, 0); }
+    25%  { transform: translate(10px, 14px); }
+    50%  { transform: translate(18px, 6px); }
+    75%  { transform: translate(6px, 16px); }
+    100% { transform: translate(0, 0); }
 }
 
 .hero-inner {
