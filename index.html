@@ -24,7 +24,7 @@
 
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=10">
+    <link rel="stylesheet" href="style.css?v=11">
     <script>
         (function() {
             const saved = localStorage.getItem('theme');
@@ -384,6 +384,31 @@
             html.setAttribute('data-theme', next);
             localStorage.setItem('theme', next);
         });
+    </script>
+
+    <script>
+        (function () {
+            const circle = document.querySelector('.hero-circle');
+            if (!circle) return;
+
+            function rand(min, max) {
+                return min + Math.random() * (max - min);
+            }
+
+            function moveToRandom() {
+                const x = rand(0, 80);
+                const y = rand(0, 65);
+                const duration = rand(6000, 12000); // 6~12초
+
+                circle.style.transition = `transform ${duration}ms ease-in-out`;
+                circle.style.transform = `translate(${x}px, ${y}px)`;
+
+                setTimeout(moveToRandom, duration);
+            }
+
+            // 첫 이동 살짝 딜레이 후 시작
+            setTimeout(moveToRandom, 300);
+        })();
     </script>
 </body>
 </html>
