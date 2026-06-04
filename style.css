@@ -1,12 +1,52 @@
+/* ─── COLOR SYSTEM ────────────────────────────────── */
+/*
+  주컬러   (Primary) : #111111 / dark #F1F1F1  — 메인 텍스트, 제목
+  보조컬러 (Secondary): #6B7280 / dark #9CA3AF  — 서브 텍스트, 구분선
+  이벤트  (Accent)  : #2563EB / dark #60A5FA  — 링크, 버튼, 강조
+*/
+
 :root {
-    --bg: #fafafa;
-    --text: #111;
-    --text-muted: #777;
-    --text-light: #bbb;
-    --border: #e8e8e8;
+    /* Primary */
+    --primary: #111111;
+    /* Secondary */
+    --secondary: #6B7280;
+    --secondary-light: #9CA3AF;
+    /* Accent */
+    --accent: #2563EB;
+    --accent-hover: #1D4ED8;
+    /* Background */
+    --bg: #FAFAFA;
+    --surface: #FFFFFF;
+    /* Border */
+    --border: #E5E7EB;
+    /* Nav */
+    --nav-bg: rgba(250, 250, 250, 0.9);
+    /* Aliases */
+    --text: var(--primary);
+    --text-muted: var(--secondary);
+    --text-light: var(--secondary-light);
+    /* Layout */
     --max-width: 960px;
     --section-pad: 96px;
+
+    color-scheme: light dark;
 }
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary: #F1F1F1;
+        --secondary: #9CA3AF;
+        --secondary-light: #6B7280;
+        --accent: #60A5FA;
+        --accent-hover: #93C5FD;
+        --bg: #0D0D0F;
+        --surface: #161619;
+        --border: #262630;
+        --nav-bg: rgba(13, 13, 15, 0.9);
+    }
+}
+
+/* ─── BASE ────────────────────────────────────────── */
 
 * {
     margin: 0;
@@ -26,6 +66,7 @@ body {
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background 0.3s, color 0.3s;
 }
 
 /* ─── NAV ─────────────────────────────────────────── */
@@ -41,10 +82,11 @@ nav {
     align-items: center;
     justify-content: space-between;
     padding: 0 40px;
-    background: rgba(250, 250, 250, 0.88);
+    background: var(--nav-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
+    transition: background 0.3s, border-color 0.3s;
 }
 
 .nav-logo {
@@ -53,6 +95,11 @@ nav {
     color: var(--text);
     text-decoration: none;
     letter-spacing: -0.02em;
+    transition: color 0.2s;
+}
+
+.nav-logo:hover {
+    color: var(--accent);
 }
 
 .nav-links {
@@ -70,7 +117,7 @@ nav {
 }
 
 .nav-links a:hover {
-    color: var(--text);
+    color: var(--accent);
 }
 
 /* ─── CONTAINER ───────────────────────────────────── */
@@ -107,10 +154,10 @@ nav {
 .eyebrow {
     display: block;
     font-size: 12px;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--text-muted);
+    color: var(--accent);
     margin-bottom: 24px;
 }
 
@@ -155,11 +202,12 @@ nav {
     text-decoration: none;
     border-bottom: 1px solid var(--border);
     padding-bottom: 2px;
-    transition: border-color 0.2s;
+    transition: color 0.2s, border-color 0.2s;
 }
 
 .contact-row a:hover {
-    border-color: var(--text);
+    color: var(--accent);
+    border-color: var(--accent);
 }
 
 .dot {
@@ -257,9 +305,9 @@ section {
     font-size: 11px;
     font-weight: 500;
     padding: 2px 7px;
-    border: 1px solid var(--border);
+    border: 1px solid var(--accent);
     border-radius: 2px;
-    color: var(--text-muted);
+    color: var(--accent);
     vertical-align: middle;
     margin-left: 8px;
     letter-spacing: 0;
@@ -279,6 +327,7 @@ section {
     align-items: start;
     padding: 32px 0;
     border-bottom: 1px solid var(--border);
+    transition: border-color 0.2s;
 }
 
 .project-item:first-child {
@@ -298,7 +347,7 @@ section {
 .cursor {
     display: inline-block;
     font-weight: 300;
-    color: var(--text-muted);
+    color: var(--accent);
     animation: blink 0.6s step-end infinite;
     margin-left: 1px;
 }
@@ -319,17 +368,17 @@ section {
     display: inline-block;
     font-size: 12px;
     font-weight: 500;
-    color: var(--text-muted);
+    color: var(--accent);
     text-decoration: none;
-    border: 1px solid var(--border);
+    border: 1px solid var(--accent);
     border-radius: 2px;
     padding: 4px 10px;
-    transition: color 0.2s, border-color 0.2s;
+    opacity: 0.75;
+    transition: opacity 0.2s;
 }
 
 .store-btn:hover {
-    color: var(--text);
-    border-color: var(--text);
+    opacity: 1;
 }
 
 /* ─── EDUCATION ───────────────────────────────────── */
@@ -364,7 +413,7 @@ section {
     border-bottom: 1px solid var(--border);
     text-decoration: none;
     color: var(--text);
-    transition: opacity 0.2s;
+    transition: color 0.2s;
     cursor: pointer;
 }
 
@@ -373,7 +422,16 @@ section {
 }
 
 .cert-item:hover {
-    opacity: 0.5;
+    color: var(--accent);
+}
+
+.cert-item:hover .cert-info p {
+    color: var(--accent);
+    opacity: 0.7;
+}
+
+.cert-item:hover .cert-arrow {
+    color: var(--accent);
 }
 
 .cert-info h3 {
@@ -381,11 +439,13 @@ section {
     font-weight: 600;
     letter-spacing: -0.02em;
     margin-bottom: 5px;
+    transition: color 0.2s;
 }
 
 .cert-info p {
     font-size: 13px;
     color: var(--text-muted);
+    transition: color 0.2s;
 }
 
 .cert-arrow {
@@ -393,6 +453,7 @@ section {
     color: var(--text-muted);
     flex-shrink: 0;
     margin-left: 24px;
+    transition: color 0.2s;
 }
 
 /* ─── FOOTER ──────────────────────────────────────── */
@@ -426,7 +487,7 @@ footer p {
 }
 
 .footer-links a:hover {
-    color: var(--text);
+    color: var(--accent);
 }
 
 /* ─── RESPONSIVE ──────────────────────────────────── */
