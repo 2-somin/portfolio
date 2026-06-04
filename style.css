@@ -187,7 +187,18 @@ nav {
     color: var(--text-muted);
     margin-bottom: 44px;
     max-width: 400px;
-    min-height: calc(18px * 1.65 * 2);
+    position: relative;
+}
+
+.tagline-ghost {
+    visibility: hidden;
+    display: block;
+}
+
+.tagline-typed {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .contact-row {
@@ -526,7 +537,6 @@ footer p {
 
     .tagline {
         font-size: 16px;
-        min-height: calc(16px * 1.65 * 2);
     }
 
     .timeline-item,
